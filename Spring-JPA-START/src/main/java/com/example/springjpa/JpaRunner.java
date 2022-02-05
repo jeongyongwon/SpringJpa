@@ -35,7 +35,17 @@ public class JpaRunner implements ApplicationRunner {
         Session session = entityManager.unwrap(Session.class);
         session.save(account);
         session.save(study);
-        //entityManager.persist(account);
+
+        //이미 윗 단계에서 트랜잭션이 끝남
+        Account yongwon = session.load(Account.class, account.getId());
+
+        //신기하게도 hibernate가 dirty checking을 통해 db에 반영해주고 아래 코드가 반영됨됨
+        //로그를 보면 업데이트를 해줬다
+        yongwon.setUsername("fucking");
+        //그러나 윗 단계에서보면 이미 넣었던 정보기 때문에 캐시가 작용하여 update문을 사용하지 않음
+        yongwon.setUsername("yongwon");
+        System.out.println("==================");
+        System.out.println(yongwon.getUsername());
 
     }
 }
