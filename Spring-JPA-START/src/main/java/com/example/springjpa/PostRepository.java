@@ -15,4 +15,11 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
         List<Post> findDistinctByTitle(String keyword);
 
+        List<Post> findByTitleContainsIgnoreCase(String keyword);
+
+        List<Post> findByIdEquals(Long id);
+
+        List<Post> findByTitleContainsIgnoreCaseAndIdGreaterThan(String keyword, Long id);
+
+        List<Post> findByTitleContainsIgnoreCaseAndIdGreaterThanOrderByIdDesc(String keyword, Long id);
 }
