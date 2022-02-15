@@ -1,4 +1,4 @@
-package com.example.commonweb.post;
+package com.example.hateoas.commonweb;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

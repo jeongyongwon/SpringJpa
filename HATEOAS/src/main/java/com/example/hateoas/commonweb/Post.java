@@ -1,4 +1,4 @@
-package com.example.commonweb.post;
+package com.example.hateoas.commonweb;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class Post {
-
     @Id
     @GeneratedValue
     private Long id;
@@ -20,4 +19,3 @@ public class Post {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 }
-

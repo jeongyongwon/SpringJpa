@@ -1,4 +1,4 @@
-package com.example.commonweb.post;
+package com.example.hateoas.commonweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,24 +6,20 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.hamcrest.Matchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc //application.propertiese를 설정
 class PostControllerTest {
-
-
     @Autowired
     MockMvc mockMvc;
 
     @Autowired
     PostRepository postRepository;
-
-
 
     @Test
     public  void getPost() throws Exception {
@@ -60,6 +56,4 @@ class PostControllerTest {
             postCount--;
         }
     }
-
-
 }
