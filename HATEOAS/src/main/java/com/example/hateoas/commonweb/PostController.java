@@ -25,7 +25,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public Page<Post> getPosts(Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+    public Page<Post> getPosts(Pageable pageable) {
         return posts.findAll(pageable);
     }
 }

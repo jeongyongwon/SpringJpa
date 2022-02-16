@@ -9,6 +9,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@NamedQuery(name = "Post.yongCustom", query = "SELECT p FROM Post As p where p.title = ?1 ") //JPQL 첫번째 인자랑 같으면 찾아달라  + 사실 여기다 쓰는것도 좀 그래서 Repo쪽에 써줘도됨
 public class Post {
     @Id
     @GeneratedValue
