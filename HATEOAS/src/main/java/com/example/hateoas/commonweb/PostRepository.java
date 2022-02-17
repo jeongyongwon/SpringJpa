@@ -2,6 +2,7 @@ package com.example.hateoas.commonweb;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -17,4 +18,11 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query( value = "SELECT p FROM #{#entityName} As p where p.title = :title " , nativeQuery = false) // 이런식으로 파라미터 바인딩도 가능 + entity 이름도 동적으로
     List<Post> yongCustom(@Param("title") String keyword, Sort sort);
+
+
+    //비추~~
+    //
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query("UPDATE Post p Set p.title = ?1 WHERE p.id = ?2")
+    int updateTitle(String title, Long id);
 }
